@@ -1,0 +1,4 @@
+body {width:500px; margin: auto;}
+th {width:100px; height: 100px; text-align: center; border:1px black solid;}
+td {width:100px; height: 100px; text-align: center; border:1px black solid;}
+.red{background:red;}
