@@ -1,0 +1,113 @@
+<!doctype html>
+<!--
+   Name:	Alex Paquette
+   Date:	11/24/2021
+   Description:
+   This site displays five cards to the user and informs them what type of win
+   condition is met. Cards are drawn when drawCards() is called. Cards are used
+   to determin the win condition as well as which cards to display.
+   Many functions in this program were created to be applicable under other
+   conditions and may be useful outside of playPoker
+
+ -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/images/icon.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Poker</title>
+    <script src="assets/script.js"></script>
+  </head>
+  <body onload="initialize()">
+    <input type="button" value="Toggle Debug Mode" onclick="toggleDebug()"/>
+    <input id="statsButton" type="button" value="Generate Stats" onclick="generateStats(10000000)"/>
+    <div class="content">
+      <div id="header"><img src="assets/images/poker.png"/></div>
+      <div id="cards_div"></div>
+      <h1 id="winMessage"></h1>
+      <input id="playButton" type="button" value="Draw Cards" onclick="play()"/>
+      <h2 id="prizePool"></h2>
+      <div class="debug" id="debug">
+        <input type="button" value="Royal Flush" onclick="debug(value)"/>
+        <input type="button" value="Straight Flush" onclick="debug(value)"/>
+        <input type="button" value="Four of a Kind" onclick="debug(value)"/>
+        <input type="button" value="Full House" onclick="debug(value)"/>
+        <input type="button" value="Flush" onclick="debug(value)"/>
+        <input type="button" value="Straight" onclick="debug(value)"/>
+        <input type="button" value="Three of a Kind" onclick="debug(value)"/>
+        <input type="button" value="Two Pairs" onclick="debug(value)"/>
+        <input type="button" value="Flash" onclick="debug(value)"/>
+        <input type="button" value="Jacks or Better" onclick="debug(value)"/>
+      </div>
+      <div id="resultsTable" class="resultsTable">
+        <table>
+          <tr>
+            <th></th>
+            <th>Count</th>
+            <th>Percent</th>
+          </tr>
+          <tr>
+            <td>Royal Flush</td>
+            <td id="royalFlushCount"></td>
+            <td id="royalFlushPercent"></td>
+          </tr>
+          <tr>
+            <td>Straight Flush</td>
+            <td id="straightFlushCount"></td>
+            <td id="straightFlushPercent"></td>
+          </tr>
+          <tr>
+            <td>Four of a Kind</td>
+            <td id="fourOfAKindCount"></td>
+            <td id="fourOfAKindPercent"></td>
+          </tr>
+          <tr>
+            <td>Full House</td>
+            <td id="fullHouseCount"></td>
+            <td id="fullHousePercent"></td>
+          </tr>
+          <tr>
+            <td>Flush</td>
+            <td id="flushCount"></td>
+            <td id="flushPercent"></td>
+          </tr>
+          <tr>
+            <td>Straight</td>
+            <td id="straightCount"></td>
+            <td id="straightPercent"></td>
+          </tr>
+          <tr>
+            <td>Three of a kind</td>
+            <td id="threeOfAKindCount"></td>
+            <td id="threeOfAKindPercent"></td>
+          </tr>
+          <tr>
+            <td>Two Pairs</td>
+            <td id="twoPairsCount"></td>
+            <td id="twoPairsPercent"></td>
+          </tr>
+          <tr>
+            <td>Flash</td>
+            <td id="flashCount"></td>
+            <td id="flashPercent"></td>
+          </tr>
+          <tr>
+            <td>Jacks or Better</td>
+            <td id="jacksOrBetterCount"></td>
+            <td id="jacksOrBetterPercent"></td>
+          </tr>
+          <tr>
+            <td>Singles</td>
+            <td id="singlesCount"></td>
+            <td id="singlesPercent"></td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td id="totalCount"></td>
+            <td id="totalPercent"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
