@@ -1,0 +1,11 @@
+body {
+    font-family: 'Dosis', sans-serif;
+    color: #777777;
+    text-align: center;
+  }
+  header, footer {
+    background-color: grey;
+  }
+  .white{
+    color:white;
+  }
