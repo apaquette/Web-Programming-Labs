@@ -8,32 +8,7 @@
   <head>
   <meta charset="UTF-8">
   <title>Pizza Price Calculator - Alex Paquette</title>
-    <style>
-    </style>
-    <script>
-      var basePrice = 0;
-      var numToppings = 0;
-      var totalCost = 0;
-
-      function updateSize(size){
-        basePrice = parseInt(size);
-        totalCost = basePrice;
-        updateCost();
-      }
-      function checkToppings(id){
-        if(document.getElementById(id).checked){
-          numToppings++;
-        }
-        else{
-          numToppings--;
-        }
-        updateCost();
-      }
-      function updateCost(){
-        totalCost = basePrice + ((basePrice/5)*numToppings);
-        document.getElementById("cost").value = "$"+totalCost;
-      }
-    </script>
+    <script src="script.js"></script>
   </head>
   <body>
     <form>
