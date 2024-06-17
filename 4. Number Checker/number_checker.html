@@ -1,0 +1,45 @@
+<!doctype html>
+<!--
+   Week 2A - Assignment 3
+   Name:	Alex Paquette
+   Date:	09/15/2021
+ -->
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Assignment 3 - Alex Paquette</title>
+    <body>
+      <form>
+        <p>Please enter a whole number:</p>
+        <input type="text" id="num">
+        <input type="button" value="Check" onClick="checkValue()">
+        <br><br>
+        <p id="message"></p>
+      </form>
+      <script>
+        function checkValue(){
+          document.getElementById("message").innerHTML="";
+          var num = parseInt(document.getElementById("num").value);
+          var msg = "";
+          if(num%2==0){
+            num=0;
+          }
+          else{
+            num=1;
+          }
+          switch(num){
+            case 0:
+              msg = "The number is Even";
+              break;
+            case 1:
+              msg = "The number is Odd";
+              break;
+          }
+          for (var i=0; i<5; i++){
+            document.getElementById("message").innerHTML+=msg+"<br>";
+          }
+        }
+      </script>
+    </body>
+  </head>
+</html>

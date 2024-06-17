@@ -1,0 +1,60 @@
+<!doctype html>
+<!--
+   Week 5A - Pizza Price Calculator
+   Name:	Alex Paquette
+   Date:	10/06/2021
+ -->
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Pizza Price Calculator - Alex Paquette</title>
+    <style>
+    </style>
+    <script>
+      var basePrice = 0;
+      var numToppings = 0;
+      var totalCost = 0;
+
+      function updateSize(size){
+        basePrice = parseInt(size);
+        totalCost = basePrice;
+        updateCost();
+      }
+      function checkToppings(id){
+        if(document.getElementById(id).checked){
+          numToppings++;
+        }
+        else{
+          numToppings--;
+        }
+        updateCost();
+      }
+      function updateCost(){
+        totalCost = basePrice + ((basePrice/5)*numToppings);
+        document.getElementById("cost").value = "$"+totalCost;
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <h1>Pizza Builder</h1>
+      <p>Select your pizza size</p>
+      <input onclick="updateSize(value)" type="radio" name="pizzaSize" value="5">Small</input>
+      <input onclick="updateSize(value)" type="radio" name="pizzaSize" value="10">Medium</input>
+      <input onclick="updateSize(value)" type="radio" name="pizzaSize" value="15">Large</input>
+
+      <p>Select your pizza toppings</p>
+      <input onclick="checkToppings(id)" type="checkbox" id="pepperoni" class="toppings">Pepperoni</input>
+      <input onclick="checkToppings(id)" type="checkbox" id="bacon" class="toppings">Bacon</input>
+      <input onclick="checkToppings(id)" type="checkbox" id="mushrooms" class="toppings">Mushrooms</input>
+      <input onclick="checkToppings(id)" type="checkbox" id="cheese" class="toppings">Cheese</input>
+      <input onclick="checkToppings(id)" type="checkbox" id="pineapples" class="toppings">Pineapples</input>
+      <input onclick="checkToppings(id)" type="checkbox" id="chicken" class="toppings">Chicken</input>
+      <input onclick="checkToppings(id)" type="checkbox" id="olives" class="toppings">Olives</input>
+      <input onclick="checkToppings(id)" type="checkbox" id="peppers" class="toppings">Peppers</input>
+
+      <p>Your pizza will cost:</p>
+      <input type="text" id="cost" value=""/>
+    </form>
+  </body>
+</html>

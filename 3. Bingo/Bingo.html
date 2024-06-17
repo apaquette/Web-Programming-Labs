@@ -1,0 +1,103 @@
+<!doctype html>
+<!--
+   Assignment Week 4A
+   Name:	Alex Paquette
+   Date:	09/29/2021
+ -->
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Bing Card - Alex paquette</title>
+    <style>
+      body {width:500px; margin: auto;}
+      th {width:100px; height: 100px; text-align: center; border:1px black solid;}
+      td {width:100px; height: 100px; text-align: center; border:1px black solid;}
+      .red{background:red;}
+    </style>
+    <script>
+      //global vars to track if a win message is displayed
+      var cornerWinTrigger = false;
+      var centerSquaresTrigger = false;
+
+      function changeColor(id){//change color on click and call check win condition
+        document.getElementById(id).className = "red";
+        checkWinCondition();
+      }
+      function checkWinCondition(){
+        //win condition arrays
+        const cornerWin = ["1","61","5","65"];
+        const centerSquares = ["17", "32", "47", "18", "48", "19", "33", "49"]
+        //check win counters
+        var checkCornerWin = 0;
+        var checkCenterSquares = 0;
+
+        for(var i=0; i<cornerWin.length; i++){//check corner win
+          if (document.getElementById(cornerWin[i]).className == "red"){
+            checkCornerWin++;
+          }
+        }
+        for(var i=0; i<centerSquares.length; i++){//check center squares win
+          if(document.getElementById(centerSquares[i]).className == "red"){
+            checkCenterSquares++;
+          }
+        }
+        //if win condition is met and message wasn't already triggered, display win message and set trigger to true
+        if(checkCornerWin == 4 && cornerWinTrigger == false){
+          document.getElementById("message").innerHTML += "You stamped all four corners! You win!<br/>";
+          cornerWinTrigger = true;
+        }
+        if(checkCenterSquares == 8 && centerSquaresTrigger == false){
+          document.getElementById("message").innerHTML += "You stamped all center squares! You win!<br/>";
+          centerSquaresTrigger = true;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <table cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <th>B</th>
+        <th>I</th>
+        <th>N</th>
+        <th>G</th>
+        <th>O</th>
+      </tr>
+      <tr>
+        <td onClick="changeColor(this.id)" id="1">1</td>
+        <td onClick="changeColor(this.id)" id="16">16</td>
+        <td onClick="changeColor(this.id)" id="31">31</td>
+        <td onClick="changeColor(this.id)" id="46">46</td>
+        <td onClick="changeColor(this.id)" id="61">61</td>
+      </tr>
+      <tr>
+        <td onClick="changeColor(this.id)" id="2">2</td>
+        <td onClick="changeColor(this.id)" id="17">17</td>
+        <td onClick="changeColor(this.id)" id="32">32</td>
+        <td onClick="changeColor(this.id)" id="47">47</td>
+        <td onClick="changeColor(this.id)" id="62">62</td>
+      </tr>
+      <tr>
+        <td onClick="changeColor(this.id)" id="3">3</td>
+        <td onClick="changeColor(this.id)" id="18">18</td>
+        <td class="red">FREE</td>
+        <td onClick="changeColor(this.id)" id="48">48</td>
+        <td onClick="changeColor(this.id)" id="63">63</td>
+      </tr>
+      <tr>
+        <td onClick="changeColor(this.id)" id="4">4</td>
+        <td onClick="changeColor(this.id)" id="19">19</td>
+        <td onClick="changeColor(this.id)" id="33">33</td>
+        <td onClick="changeColor(this.id)" id="49">49</td>
+        <td onClick="changeColor(this.id)" id="64">64</td>
+      </tr>
+      <tr>
+        <td onClick="changeColor(this.id)" id="5">5</td>
+        <td onClick="changeColor(this.id)" id="20">20</td>
+        <td onClick="changeColor(this.id)" id="34">34</td>
+        <td onClick="changeColor(this.id)" id="50">50</td>
+        <td onClick="changeColor(this.id)" id="65">65</td>
+      </tr>
+    </table>
+    <h2 id="message"></h2>
+  </body>
+</html>

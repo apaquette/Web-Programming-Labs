@@ -1,0 +1,66 @@
+<!doctype html>
+<!--
+   Assignment Week 3B
+   Name:	Alex Paquette
+   Date:	09/24/2021
+ -->
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Assignment Week 3B - Alex</title>
+    <script>
+      function timer(){
+        var timeLeft=0;
+        var countdownTimer = setInterval(function(){
+          timeLeft++;
+          var upDown = document.getElementsByClassName("upDown");
+          var leftRight = document.getElementsByClassName("leftRight");
+          switch(timeLeft){
+            case 5:
+              for(var i=0; i<2; i++){
+                upDown[i].src = "light-yellow.png";
+              }
+              break;
+            case 10:
+              for(var i=0; i<2; i++){
+                upDown[i].src = "light-red.png";
+                leftRight[i].src = "light-adv.png";
+              }
+              break;
+            case 15:
+              for(var i=0; i<2; i++){
+                leftRight[i].src = "light-green.png";
+              }
+              break;
+            case 20:
+              for(var i=0; i<2; i++){
+                leftRight[i].src = "light-yellow.png";
+              }
+              break;
+            case 25:
+              for(var i=0; i<2; i++){
+                upDown[i].src = "light-adv.png";
+                leftRight[i].src = "light-red.png";
+              }
+              break;
+            case 30:
+              for(var i=0; i<2; i++){
+                upDown[i].src = "light-green.png";
+              }
+              timeLeft = 0;
+              break;
+            default://do nothing
+              break;
+            }
+        }, 1000);
+      }
+    </script>
+  </head>
+  <body onload="timer()">
+    <h1>Intersection</h1>
+    <div style="position: absolute; left:300px;"><img class="upDown" src="light-green.png"/></div>
+    <div style="position: absolute; left:50px;top:252px;"><img class="leftRight" src="light-red.png"/></div>
+    <div style="position: absolute; left:300px;top:400px;"><img class="upDown" src="light-green.png"/></div>
+    <div style="position: absolute; left:550px;top:252px;"><img class="leftRight" src="light-red.png"/></div>
+  </body>
+</html>

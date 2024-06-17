@@ -1,0 +1,90 @@
+<!doctype html>
+<!--
+
+   Name:	Alex Paquette
+   Date:	11/10/2021
+ -->
+<html>
+  <head>
+  <title>Trivia Question</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+      body{
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        align-content: flex-start;
+      }
+      form{
+        display: flex;
+        flex-flow: column;
+        align-items: flex-start;
+      }
+    </style>
+    <script>
+      var theAnswer;
+      var currentQuestion;
+      var questions = [
+        ['What colour is the sky?', 'Blue', 'Red', 'Orange', 1],
+        ['What colour is the grass?', 'Orange', 'Yellow', 'Green', 3],
+        ['What colour is the blood?', 'Purple', 'Red', 'Pink', 2],
+        ['What colour is the smurf?', 'Blue', 'Orange', 'Red', 1],
+        ['What colour is the soup?', 'Blue', 'White', 'Green', 3],
+      ];
+      var correct = 0;
+      var wrong = 0;
+      function updateAnswer(num){
+        theAnswer = num;
+      }
+      function trivia(){
+        currentQuestion = 0;
+        updateQuestion();
+      }
+      function nextQuestion(){
+        tallyAnswer();
+        currentQuestion++;
+        if(currentQuestion == 5){
+          document.getElementById("button").className = "btn btn-primary disabled";
+        }
+        if(currentQuestion < 5){
+          updateQuestion();
+        }
+      }
+      function updateQuestion(){
+        document.getElementById("theForm").reset();
+        document.getElementById("question").innerHTML = questions[currentQuestion][0];
+
+        var answers = document.getElementsByClassName("answers");
+        for(var i = 1; i < 4; i++){
+          answers[i-1].innerHTML = questions[currentQuestion][i];
+        }
+      }
+      function tallyAnswer(){
+        if(theAnswer == questions[currentQuestion][4]){
+          correct++;
+        }else{
+          wrong++;
+        }
+        document.getElementById("correct").innerHTML = ("Correct=" + correct);
+        document.getElementById("wrong").innerHTML = ("Wrong=" + wrong);
+      }
+    </script>
+  </head>
+  <body onload="trivia()">
+    <h1 id="question"></h1>
+    <form id="theForm">
+      <label><input type="radio" name="theAnswers" onclick="updateAnswer(1)" /><span class="answers"></span></label>
+      <label><input type="radio" name="theAnswers" onclick="updateAnswer(2)" /><span class="answers"></span></label>
+      <label><input type="radio" name="theAnswers" onclick="updateAnswer(3)" /><span class="answers"></span></label>
+    </form>
+    <button type="button" class="btn btn-primary" onclick="nextQuestion()" id="button" style="margin-top: 5px; align-self: flex-start;">See Answer</button>
+    <p style="margin: 10px 0 0 0;" class="text-success" id="correct">Correct=</p>
+    <p style="margin: 0 0 0 0;" class="text-danger" id="wrong">Wrong=</p>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<!--
+   Name:	Alex Paquette
+   Date:	11/04/2021
+ -->
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Escape the Spade</title>
+    <style>
+      body{
+        background-color: black;
+        margin: auto;
+        width: 900px;
+        display: flex;
+        flex-flow: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+      }
+      .cards{
+        display: flex;
+        flex-flow: row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+      }
+      .buttonContainer{
+        display: flex;
+        flex-flow: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+      input{
+        align-self: center;
+        background: black;
+        color: white;
+      }
+    </style>
+    <script>
+      var winMessage;
+
+      function play(){
+        winMessage = "You win $"
+        var cards = document.getElementsByClassName("card");
+        for(var x = 0; x < cards.length; x++){
+          var ranNum = Math.floor((Math.random() * 4) + 1);
+          cards[x].src = "suit-" + ranNum + ".png";
+          if(ranNum == 4){
+            winMessage = "You lose!";
+          }
+        }
+        if(winMessage == "You win $"){
+          checkPrize(cards);
+        }
+        document.getElementById("winCondition").value = winMessage;
+      }
+
+      //if three of a kind, you win - prize 4 (easiest)
+      //if cards are the same color, you win - prize 3 (easy)
+      //if all cards are the same suite, you win - prize 2 (hard)
+      //if cards are alternating a suite, you win - prize 1 (hardest?)
+      function checkPrize(cards){
+        var clubs = 0;
+        var diamonds = 0;
+        var hearts = 0;
+
+        for(var i = 0; i < 4; i++){
+          if (cards[i].src.match("suit-1.png")){
+            clubs++;
+          }if (cards[i].src.match("suit-2.png")){
+            diamonds++;
+          }if (cards[i].src.match("suit-3.png")){
+            hearts++;
+          }
+        }
+
+        if(clubs == 4 || diamonds == 4 || hearts == 4){//same suit
+          winMessage += "10,000";
+        }else if ((cards[0].src == cards[2].src) && (cards[1].src == cards[3].src)){//alternating suits
+          winMessage += "1,000";
+        }else if((diamonds + hearts) == 4){//same color, clubs are omitted since all clubs would trigger same suit win condition
+          winMessage += "100";
+        }else if(clubs == 3 || diamonds == 3 || hearts == 3){//three of a kind
+          winMessage += " 10";
+        }else{//basic win condition
+          winMessage += "1";
+        }
+        winMessage += "!";
+      }
+    </script>
+  </head>
+  <body>
+    <img src="escapethespadelogo.png"/>
+    <div class="cards">
+      <img class="card" src="suit-1.png"/>
+      <img class="card" src="suit-1.png"/>
+      <img class="card" src="suit-1.png"/>
+      <img class="card" src="suit-1.png"/>
+    </div>
+    <div class="buttonContainer">
+      <input onclick="play()" type="Button" id="playButton" value="Play Now"/>
+      <input style="text-align: center; margin: 10px;" type="text" id="winCondition" value=""/>
+      <ol>
+        <li>Same Suit - $10,000</li>
+        <li>Alternating Suits - $1,000</li>
+        <li>Same Color - $100</li>
+        <li>Three of a kind - $10</li>
+        <li>No Spades - $1</li>
+      </ol>
+    </div>
+  </body>
+</html>

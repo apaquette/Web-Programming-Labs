@@ -1,0 +1,31 @@
+<!doctype html>
+<!--
+   Assignment Week 3A
+   Name:	Alex Paquette
+   Date:	09/22/2021
+ -->
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Number Guesser - Alex Paquette</title>
+    <script>
+      var randomNumber = Math.floor(Math.random()*10)+1;
+      function check(){
+        var guess = document.getElementById("guess").value;
+        if(guess < randomNumber){
+          document.getElementById("message").innerHTML = "Guess is too low!";
+        }else if(guess > randomNumber){
+          document.getElementById("message").innerHTML = "Guess is too high!";
+        }else if(guess == randomNumber){
+          document.getElementById("message").innerHTML = "You guessed correctly!";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <p>What is your guess?</p>
+    <input type="text" value="" id="guess"/>
+    <input type="button" value="Check the number!" onClick="check()">
+    <p id="message"></p>
+  </body>
+</html>

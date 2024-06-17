@@ -1,0 +1,58 @@
+<!doctype html>
+<!--
+   Week 1B - In-class Assignment
+   Name:	Alex Paquette
+   Date:	09/10/2021
+ -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Week 1B - Alex  Paquette</title>
+    <script>
+      function addTheNumbers(){//addition
+        var number1=document.getElementById("addNumber1").value;
+        var number2=document.getElementById("addNumber2").value;
+        var sum = parseInt(number1) + parseInt(number2);
+        document.getElementById("sum").value=sum;
+      }
+
+      function subTheNumbers(){//subtraction
+        var number1=document.getElementById("subNumber1").value;
+        var number2=document.getElementById("subNumber2").value;
+        var difference = parseInt(number1) - parseInt(number2);
+        document.getElementById("difference").value=difference;
+      }
+
+      function multTheNumbers(){//multiplication
+        var number1=document.getElementById("multNumber1").value;
+        var number2=document.getElementById("multNumber2").value;
+        var product = parseInt(number1) * parseInt(number2);
+        document.getElementById("product").value=product;
+      }
+
+      function divTheNumbers(){//division
+        var number1=document.getElementById("divNumber1").value;
+        var number2=document.getElementById("divNumber2").value;
+        var quotient = parseInt(number1) / parseInt(number2);
+        document.getElementById("quotient").value=quotient;
+      }
+
+    </script>
+  </head>
+
+  <body>
+    <form>
+      <input type="text" id="addNumber1" /> + <input type="text" id="addNumber2" /> =
+      <input type="text" id="sum" /> <input type="button" value="Calculate" onclick="addTheNumbers()" />
+      <br><br>
+      <input type="text" id="subNumber1" /> - <input type="text" id="subNumber2" /> =
+      <input type="text" id="difference" /> <input type="button" value="Calculate" onclick="subTheNumbers()" />
+      <br><br>
+      <input type="text" id="multNumber1" /> &#215 <input type="text" id="multNumber2" /> =
+      <input type="text" id="product" /> <input type="button" value="Calculate" onclick="multTheNumbers()" />
+      <br><br>
+      <input type="text" id="divNumber1" /> &#247 <input type="text" id="divNumber2" /> =
+      <input type="text" id="quotient" /> <input type="button" value="Calculate" onclick="divTheNumbers()" />
+    </form>
+  </body>
+</html>
