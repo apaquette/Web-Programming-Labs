@@ -1,0 +1,28 @@
+<!doctype html>
+<!--
+
+   Name:	Alex Paquette
+   Date:	11/10/2021
+ -->
+<html>
+  <head>
+  <title>Trivia Question</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body onload="trivia()">
+    <h1 id="question"></h1>
+    <form id="theForm">
+      <label><input type="radio" name="theAnswers" onclick="updateAnswer(1)" /><span class="answers"></span></label>
+      <label><input type="radio" name="theAnswers" onclick="updateAnswer(2)" /><span class="answers"></span></label>
+      <label><input type="radio" name="theAnswers" onclick="updateAnswer(3)" /><span class="answers"></span></label>
+    </form>
+    <button type="button" class="btn btn-primary" onclick="nextQuestion()" id="button" style="margin-top: 5px; align-self: flex-start;">See Answer</button>
+    <p style="margin: 10px 0 0 0;" class="text-success" id="correct">Correct=</p>
+    <p style="margin: 0 0 0 0;" class="text-danger" id="wrong">Wrong=</p>
+  </body>
+</html>
