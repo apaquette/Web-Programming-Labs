@@ -1,0 +1,28 @@
+body{
+  background-color: black;
+  margin: auto;
+  width: 900px;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.cards{
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+.buttonContainer{
+  display: flex;
+  flex-flow: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+input{
+  align-self: center;
+  background: black;
+  color: white;
+}
